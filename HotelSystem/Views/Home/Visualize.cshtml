@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Lets explore the Hotel Data";
+}
+<br/>
+<h3>@ViewBag.Message</h3>
+<hr/>
+<script type="text/javascript" src="http://public.tableausoftware.com/javascripts/api/viz_v1.js"></script>
+@Html.Partial("_LoginPartial")
+<center>
+    <ul class="nav nav-tabs">
+        <li class="active" style="margin-left:50px;"><div class="rc_btn_01"><a data-toggle="tab" href="#tableau">Using Tableau</a></div></li>
+        <li>___</li>
+        <li><div class="rc_btn_01"><a data-toggle="tab" href="#powerbi">Using Power BI</a></div></li>
+    </ul>
+    <div class="tab-content">
+        <div id="tableau" class="tab-pane fade in active">
+            <center>
+                <script type='text/javascript' src='https://10az.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1020px; height: 1000px;'><object class='tableauViz' width='1020' height='1000' style='display:none;'><param name='host_url' value='https%3A%2F%2F10az.online.tableau.com%2F' /> <param name='site_root' value='&#47;t&#47;hotelrecommendationsystem' /><param name='name' value='hotelRecommendation&#47;HotelClusterandUserStory' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showShareOptions' value='true' /></object></div>
+            </center>
+        </div>
+        <div id="powerbi" class="tab-pane fade">
+            <center>
+                <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiMWI1ZjlkN2YtZWQ5NC00NmI0LWE4ZjItNzE3MTcxMzI1NjEyIiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+            </center>
+        </div>
+    </div>
+</center>
+    
+
+
+

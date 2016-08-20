@@ -54,6 +54,10 @@ namespace HotelSystem.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "UserId")]
+        public int uid { get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -68,6 +72,12 @@ namespace HotelSystem.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "UserId")]
+        public string uid { get; set; }
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> UserIds { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]

@@ -3,18 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Hotel Recommendation System</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <script type="text/javascript">
-        var appInsights=window.appInsights||function(config){
-            function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Ajax"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace", "Ajax"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t
         }({
-            instrumentationKey:"b8f63a9f-cb3d-4751-8673-f5b4e8a9a38f"
+            instrumentationKey: "b8f63a9f-cb3d-4751-8673-f5b4e8a9a38f"
         });
 
-        window.appInsights=appInsights;
+        window.appInsights = appInsights;
         appInsights.trackPageView();
     </script>
     <link rel="stylesheet" type="text/css" href="~/Content/style.css">
@@ -23,22 +24,55 @@
     <div id="container">
         <div id="header">
             <div id="website_title">
-                <div id="title"> Hotel &amp; Travel </div>
-                <div id="salgon"> Lets book your place with a little bit of mind !!</div>
+                <div id="title"> Your Hotel Advisor</div>
+                <div id="salgon"> We provide you the best hotel recommendations</div>
             </div>
         </div>
-
+        <div id="banner">
+            <div id="menu">
+                @using Microsoft.AspNet.Identity
+                @if (Request.IsAuthenticated)
+                {
+                    if (User.Identity.GetUserName().Equals("alpha@hotel.com")
+        || User.Identity.GetUserName().Equals("divyansh@hotel.com") || User.Identity.GetUserName().Equals("amitha@hotel.com")
+        || User.Identity.GetUserName().Equals("jyoti@hotel.com"))
+                    {
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "current" })</li>
+                            <li>@Html.ActionLink("Report", "Report", "Home", new { area = "" }, new { @class = "current" })</li>
+                            <li>@Html.ActionLink("Visualizations", "Visualize", "Home", new { area = "" }, new { @class = "current" })</li>
+                            <li>@Html.ActionLink("Explore Sample Data", "Sample", "Home", new { area = "" }, new { @class = "current" })</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "current" })</li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "current" })</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "current" })</li>
+                        </ul>
+                    }
+                }
+                else
+                {
+                        <h4>
+                            Welcome to Hotel Management System
+                        </h4>
+                }
+            </div>
+        </div>
         <div id="content">
             @RenderBody()
             @RenderSection("SPAViews", required: false)
         </div>
         <div id="footer">
-            Copyright &copy; 2016 <a href="#"><strong>hotelOnline</strong></a> | Designed by <a target="_blank" rel="nofollow" href="#">Divyansh, Amitha, Jyoti</a>
+            Copyright &copy; 2016 <a href="/"><strong>hotelOnline</strong></a> | Analytics by <a target="_blank" rel="nofollow" href="~/Home/Contact">Divyansh, Amitha, Jyoti</a>
             <div style="clear: both; margin-top: 10px;"> </div>
         </div>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("Scripts", required: false)
     </div>
+
 </body>
 </html>

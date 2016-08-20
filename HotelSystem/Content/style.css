@@ -19,7 +19,6 @@ a:active, a:hover { color: #ff5400; text-decoration: underline;}
 	height: 1px;
 	font-size: 1px;	
 }
-
 p {
 	margin: 0px;
 	padding: 0px;
@@ -158,6 +157,12 @@ img {
 #menu ul {
 	width: 580px;
 	margin: 15px 0 0 180px;
+	padding: 0px;
+	list-style: none;
+}
+#banner #menu h4 {
+	width: 580px;
+	margin: 15px 0 0 280px;
 	padding: 0px;
 	list-style: none;
 }
@@ -308,7 +313,7 @@ img {
 	float: left;
 	width: 82px;
 	padding: 5px;
-	background: #221f1d;
+	background: #FFF;
 	text-align: center;
 	margin-right: 15px;
 }

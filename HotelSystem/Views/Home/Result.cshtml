@@ -1,0 +1,32 @@
+﻿@model HotelSystem.Models.ResultViewModel
+@{
+    int[] pics = new int[3];
+    Random r = new Random();
+    for (int i = 0; i < 3; i++)
+    {
+        r.Next(1, 12);
+        pics[i] = r.Next(1, 12);
+    }
+    int cnt = 0;
+}
+<link rel="stylesheet" type="text/css" href="~/Content/style.css">
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
+
+<br/>
+<hr/>
+<div class="row" style="display: flex; flex-direction: row;  flex-wrap: nowrap; justify-content: space-between; margin-left:30px;">
+    @foreach (var cats in Model.recommendations)
+    {
+        <div class="gallery_box" style="width: 300px;height: 300px;">
+            <img src="@Url.Content(String.Format("~/Content/images/image_0{0}.jpg", pics[cnt++]))" width="250" height="250" />
+            <h1>
+                @Html.ActionLink(cats.ToString(), "Review", "Home", routeValues: new { hotelId = cats, path = pics[cnt-1]}, htmlAttributes: new { style = "color:#000" })
+            </h1>
+        </div>
+    }
+</div>
+
+<h3>
+    Please click on above hotel links to explore more information about the hotel
+</h3>

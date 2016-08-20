@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HotelSystem.Models;
+using System.Data;
+using System.Collections.Generic;
 
 namespace HotelSystem.Controllers
 {
@@ -79,9 +81,12 @@ namespace HotelSystem.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    if (model.Email.Equals("alpha@hotel.com"))
+                    if (model.Email.Equals("alpha@hotel.com") || model.Email.Equals("divyansh@hotel.com")
+                        || model.Email.Equals("jyoti@hotel.com") || model.Email.Equals("amitha@hotel.com")
+                        || model.Email.Equals("prateek@hotel.com") || model.Email.Equals("sri@hotel.com")
+                        || model.Email.Equals("jyoti@hotel.com"))
                     {
-                        return View("Business");
+                        return RedirectToLocal("~/Home/Business");
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -143,7 +148,9 @@ namespace HotelSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            model.UserIds = MyData.GetUserIds();
+            return View(model);
         }
 
         //
@@ -153,9 +160,10 @@ namespace HotelSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,Id=model.uid };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

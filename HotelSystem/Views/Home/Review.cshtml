@@ -1,0 +1,92 @@
+﻿@using HotelSystem.Controllers
+@model HotelSystem.Models.ReviewModel
+@{
+    ViewBag.Title = "Review";
+}
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<link rel="stylesheet" type="text/css" href="~/Content/style.css">
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<div class="row">
+    <div class="col-md-4">
+        <h3>
+            Our analysis on this Hotel @Model.hotelid :
+        </h3>
+        <h2>
+            @{
+                if (Model.reviewRating == HotelSystem.Models.ReviewModel.rating.No)
+                {
+                    <font color="#FFFFFF">
+                        @Model.ratingCategory
+                    </font>
+                }
+                else if (Model.reviewRating == HotelSystem.Models.ReviewModel.rating.Excellent)
+                {
+                    <font color="#00FF00">
+                        @Model.ratingCategory
+                    </font>
+                }
+                else if (Model.reviewRating == HotelSystem.Models.ReviewModel.rating.VeryGood)
+                {
+                    <font color="#004400">
+                        @Model.ratingCategory
+                    </font>
+                }
+                else if (Model.reviewRating == HotelSystem.Models.ReviewModel.rating.Average)
+                {
+                    <font color="#FF00FF">
+                        @Model.ratingCategory
+                    </font>
+                }
+                else if (Model.reviewRating == HotelSystem.Models.ReviewModel.rating.Poor)
+                {
+                    <font color="#FFFF00">
+                        @Model.ratingCategory
+                    </font>
+                }
+                else if (Model.reviewRating == HotelSystem.Models.ReviewModel.rating.NA)
+                {
+                    <font color="#456789">
+                        @Model.ratingCategory
+                    </font>
+                }
+            }
+        </h2>
+    </div>
+    <div class="col-md-4">
+        <img src="@Url.Content(String.Format(@Model.tempPic))" />
+    </div>
+</div>
+<hr /><hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Review", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.hotelid, new { @class = "col-md-2 control-label", @style = "width:200px;" })
+                <div class="col-md-4">
+                    @Html.DropDownListFor(m => m.hotelid, MyData.getHotelListWithout0ForDemo(), new { @class = "form-control", @id = "hid" })
+                </div>
+            </div>
+            <div class="rc_btn_01">
+                <br/>
+                <div class="rc_btn_01"><a href="#" id="btn">Check Hotel Reviews</a></div>            
+            </div>
+        }
+    </div>
+    <div class="col-md-4">
+        <br/>
+        <h2 id="reviews"></h2>
+    </div>
+    <script type="text/javascript">
+        $('#btn').click(function () {
+            var url = "/Home/Review2";
+            var name = $('#hid').val();
+            $.get(url, { input: name }, function (data) {
+                $("#reviews").html(data);
+            });
+        })
+    </script>
+</div>

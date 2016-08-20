@@ -1,204 +1,82 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-
-<div id="content_left">
-    <div class="content_left_section">
-        <div class="content_title_01">Booking</div>
-        <form method="get" action="#">
-            <div class="form_row">
-                <label>Arrival</label>
-                <select name="day">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                </select>
-                <select name="month">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
-                </select>
-                <select name="year">
-                    <option>2010</option>
-                    <option>2011</option>
-                    <option>2012</option>
-                    <option>2013</option>
-                    <option>2014</option>
-                    <option>2015</option>
-                    <option>2016</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                    <option>2019</option>
-                    <option>2020</option>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2013</option>
-                    <option>2024</option>
-                </select>
-            </div>
-            <div class="form_row">
-                <label>Departure</label>
-                <select name="day">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                </select>
-                <select name="month">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
-                </select>
-                <select name="year">
-                    <option>2010</option>
-                    <option>2011</option>
-                    <option>2012</option>
-                    <option>2013</option>
-                    <option>2014</option>
-                    <option>2015</option>
-                    <option>2016</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                    <option>2019</option>
-                    <option>2020</option>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2013</option>
-                    <option>2024</option>
-                </select>
-            </div>
-            <div class="form_row">
-                <label>Persons:</label>
-                <input class="inputfield" name="person" type="text" style="width: 30px; margin-right: 20px;" />
-                <label>Rooms:</label>
-                <input class="inputfield" name="person" type="text" style="width: 30px;" />
-            </div>
-            <div class="cleaner_h20">&nbsp;</div>
-            <div class="rc_btn_01"><a href="#">Check Availability</a></div>
-        </form>
-        <div class="cleaner">&nbsp;</div>
-    </div>
-    <!-- end of booking -->
+@using Microsoft.AspNet.Identity
+@if (!(Request.IsAuthenticated && (User.Identity.GetUserName().Equals("alpha@hotel.com")
+                                || User.Identity.GetUserName().Equals("divyansh@hotel.com") || User.Identity.GetUserName().Equals("amitha@hotel.com")
+                                || User.Identity.GetUserName().Equals("prateek@hotel.com") || User.Identity.GetUserName().Equals("sri@hotel.com"))))
+{
     <div class="cleaner_h30">&nbsp;</div>
-    <div class="cleaner_horizontal_divider_01">&nbsp;</div>
-    <div class="cleaner_h30">&nbsp;</div>
-    <div class="content_left_section">
-        <div class="content_title_01">Latest News</div>
-        <div class="news_title">Lynna Mormont</div>
-        <p>You can not argue. <a href="#">read more</a></p>
+        <div class="cleaner_horizontal_divider_01">&nbsp;</div>
         <div class="cleaner_h30">&nbsp;</div>
-        <div class="news_title">Khaleesi</div>
-        <p>You can not even speak. <a href="#">read more</a></p>
-        <div class="cleaner_h20">&nbsp;</div>
-        <div class="rc_btn_02"><a href="#">View All</a></div>
-    </div>
-    <!-- end of news section -->
-    <div class="cleaner_h30">&nbsp;</div>
-    <div class="cleaner_horizontal_divider_01">&nbsp;</div>
-    <div class="cleaner_h30">&nbsp;</div>
-    <a href="#"><img src="~/Content/images/special_offer.jpg" alt="" /></a>
-    <marquee>Yes, you heard it right. We have an offer waiting just for you. Click here to know more about it.</marquee>
-    <div class="cleaner_h30">&nbsp;</div>
-</div>
-<!-- end of content left -->
-<div id="content_right">
-    <div class="content_right_section">
-        @Html.Partial("_LoginPartial")
-        <br /><br /><br />
-        <div class="content_title_01">Welcome to hotel &amp; travel</div>
-        <img src="~/Content/images/image_01.jpg" alt="" />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum, urna eu feugiat ultricies, turpis leo tempor lacus, in vestibulum diam nisl sed lorem. </p>
-        <p>Mauris at tortor non mauris rhoncu vesti bulum. Praesent purus nuncn com modo metus. Mae cen astin cidu tellus et risus com modo lobor tiSed alique.</p>
-    </div>
-    <div class="cleaner_h40">&nbsp;</div>
+        <div class="content_right_section">
+            @Html.Partial("_LoginPartial")
+            <br /><br /><br />
+            <div class="container">
+                We are the fastest growing hotel recommendation organization. If you are our customer, we value your sentiments and provide you
+                the best possible recommendations based on your taste. Yes, we value our relations and never forget what you like.
+                You can explore our hotels and check out all the online suggestions based on available reviews. Our system is based on trust and values. 
 
-    <div class="cleaner_h40">&nbsp;</div>
-    <div class="content_right_section">
-        <div class="content_title_01">Gallery</div>
-        <div class="gallery_box"> <img src="~/Content/images/image_02.jpg" alt="" /> <a href="#">one</a> </div>
-        <div class="gallery_box"> <img src="~/Content/images/image_03.jpg" alt="" /> <a href="#">two</a> </div>
-        <div class="gallery_box"> <img src="~/Content/images/image_04.jpg" alt="" /> <a href="#">three</a> </div>
-        <div class="gallery_box"> <img src="~/Content/images/image_05.jpg" alt="" /> <a href="#">four</a> </div>
-        <div class="gallery_box"> <img src="~/Content/images/image_06.jpg" alt="" /> <a href="#">five</a> </div>
-        <div class="cleaner_h20">&nbsp;</div>
-        <div class="rc_btn_02"><a href="#">View All</a></div>
-        <div class="cleaner">&nbsp;</div>
-    </div>
-    <div class="cleaner_h20">&nbsp;</div>
-</div>
-<!-- end of content right -->
-<div class="cleaner">&nbsp;</div>
+            </div>
+        </div>
+    if (Request.IsAuthenticated)
+    {
+        <h3>Welcome back. Lets start where we left last time.</h3>
+
+        <h3>We have some recommendations for you</h3>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+$(function(){
+    $('#button').click(function(){
+        if(!$('#iframe').length) {
+                $('#iframeHolder').html('<iframe id=\"iframe\" src=\"/Home/Result\" width=\"700\" height=\"450\"></iframe>');
+        }
+    });
+});
+        </script>
+
+        <a id="button">Button</a>
+        <div id="iframeHolder"></div>
+                        <div class="cleaner_h20">&nbsp;</div>
+        if (!(User.Identity.GetUserName().Equals("alpha@hotel.com")
+                               || User.Identity.GetUserName().Equals("divyansh@hotel.com") || User.Identity.GetUserName().Equals("amitha@hotel.com")
+                               || User.Identity.GetUserName().Equals("jyoti@hotel.com")
+                                || User.Identity.GetUserName().Equals("prateek@hotel.com") || User.Identity.GetUserName().Equals("sri@hotel.com")))
+        {
+            <marquee>
+                Out goal is to provide the best holiday place for you and your family. We care for you.
+                If you do not get what you want,
+                Please call our business team to analyze your need and suggest you what type of hotel fits your need.
+            </marquee>
+        }
+        <iframe id='ifr' frameborder="0" scrolling="no" width="650" height="800"></iframe>
+            }
+            else
+            {
+            <h4>
+                Our system is free to join, we invite you to be a part of our system and enjoy the resources collected over a large amount of time.
+                Go Ahead, click on Register!!
+            </h4>
+            <marquee>
+                Out goal is to provide the best holiday place for you and your family. We care for you.
+            </marquee>
+            }
+            <div class="cleaner">&nbsp;</div>
+
+            <div class="cleaner_h20">&nbsp;</div>
+            <script type="text/javascript">
+                $('iframe').load(function () {
+                    this.style.backgroundImage = "";
+                });
+            </script>
+
+            }
+            else
+            {
+            @Html.Partial("Business")
+            }
+
+
+
+            <!-- end of content right -->
+            <div class="cleaner">&nbsp;</div>
